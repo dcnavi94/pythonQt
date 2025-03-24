@@ -17,20 +17,20 @@ class Aplicacion(QWidget):
         label.resize(250,60)
         label.setAlignment(Qt.AlignCenter)
         
-        VANILLA = QCheckBox('Vainilla', self)
-        VANILLA.move(20, 80)
-        CHOCOLATE = QCheckBox('Chocolate', self)
-        CHOCOLATE.move(20, 100)
-        FRESA = QCheckBox('Fresa', self)
-        FRESA.move(20, 120)
+        self.VANILLA = QCheckBox('Vainilla', self)
+        self.VANILLA.move(20, 80)
+        self.CHOCOLATE = QCheckBox('Chocolate', self)
+        self.CHOCOLATE.move(20, 100)
+        self.FRESA = QCheckBox('Fresa', self)
+        self.FRESA.move(20, 120)
         
-        VANILLA.StateChanged.connect(self.mostrarEstado)
-        CHOCOLATE.StateChanged.connect(self.mostrarEstado)
-        FRESA.StateChanged.connect(self.mostrarEstado)
+        self.VANILLA.stateChanged.connect(self.mostrarEstado)
+        self.CHOCOLATE.stateChanged.connect(self.mostrarEstado)
+        self.FRESA.stateChanged.connect(self.mostrarEstado)
         
-    def mostrarEstado(self):
+    def mostrarEstado(self, state):
         sender = self.sender()
-        if estado := sender.isChecked():
+        if state == Qt.Checked:
             print(f'{sender.text()} seleccionado')
         else:
             print(f'{sender.text()} deseleccionado')
